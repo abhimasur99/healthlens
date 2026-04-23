@@ -1,5 +1,3 @@
-import { APP_VERSION } from "../data/patientData.js";
-
 export default function RoleSelect({ onSelectPatient, onSelectPhysician }) {
   return (
     <div style={{
@@ -12,7 +10,6 @@ export default function RoleSelect({ onSelectPatient, onSelectPhysician }) {
           <div style={{ fontSize: 26, fontWeight: 700, color: "#1C1C1E", marginBottom: 3 }}>HealthLens</div>
           {/* Fix 2 — updated tagline */}
           <div style={{ fontSize: 14, color: "#8E8E93", marginBottom: 2 }}>Post-discharge recovery monitoring</div>
-          <div style={{ fontSize: 11, color: "#C7C7CC" }}>Cornell Tech Health Tech · {APP_VERSION}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <button

@@ -54,10 +54,11 @@ export default function PatientAsk({ day, data, onFlag, onMedToggle }) {
     if (!userMsg) return;
     setInput("");
     const uid = Date.now() + "u";
-    setMessages((prev) => [...prev, { id: uid, role: "user", text: userMsg }]);
+    const nextMessages = [...messages, { id: uid, role: "user", text: userMsg }];
+    setMessages(nextMessages);
     setLoading(true);
     try {
-      const reply = await sendMessage(messages, day, d);
+      const reply = await sendMessage(nextMessages, day, d);
       setMessages((prev) => [
         ...prev,
         { id: Date.now() + "a", role: "assistant", text: reply || "I'm having trouble responding. Please contact your care team.", isAgent: true, flagged: false },
