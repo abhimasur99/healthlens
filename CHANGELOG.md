@@ -17,13 +17,6 @@
 - `src/App.jsx` + `src/main.jsx`
 - All documentation files
 
-**Fixes applied:**
-1. Removed hypothesis card from RoleSelect
-2. Updated tagline to "Post-discharge recovery monitoring"
-3. Disposition state reset on day change (useEffect)
-4. MedLogger: data-driven tap UI, no API call
-5. API routed through Vercel proxy
-
 **Architecture changes from V8:**
 - Added Vercel serverless proxy — API key never in browser
 - Model upgraded: `claude-sonnet-4-20250514` → `claude-sonnet-4-6`

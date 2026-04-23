@@ -1,6 +1,6 @@
 # HealthLens
 
-Post-discharge cardiac recovery monitoring agent.
+Post-discharge recovery monitoring agent.
 Cornell Tech Health Tech MS prototype · V9 · Synthetic data only.
 
 ## Setup
