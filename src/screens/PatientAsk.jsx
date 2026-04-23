@@ -5,14 +5,14 @@ import { sendMessage } from "../agent/api.js";
 
 const INIT_MSG = {
   id: "init", role: "assistant",
-  text: "Hi! I'm your HealthLens assistant. Ask me anything about your recovery, medications, or progress.",
+  text: "Hi James! I am your HealthLens assistant. Ask me anything about your recovery, medications, or progress.",
   isAgent: true, flagged: false,
 };
 
-export default function PatientAsk({ day, data, onFlag, onMedToggle }) {
-  const [messages, setMessages] = useState([INIT_MSG]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+export default function PatientAsk({ day, data, onFlag, onMedMark }) {
+  const [messages, setMessages]       = useState([INIT_MSG]);
+  const [input, setInput]             = useState("");
+  const [loading, setLoading]         = useState(false);
   const [showMedLogger, setShowMedLogger] = useState(false);
   const bottomRef = useRef(null);
   const d = data[day];
@@ -45,7 +45,7 @@ export default function PatientAsk({ day, data, onFlag, onMedToggle }) {
         flagged: false,
       },
     ]);
-    onMedToggle(`${medIndex}-${todayIndex}`);
+    onMedMark(`${medIndex}-${todayIndex}`);
     setShowMedLogger(false);
   }
 
@@ -61,7 +61,7 @@ export default function PatientAsk({ day, data, onFlag, onMedToggle }) {
       const reply = await sendMessage(nextMessages, day, d);
       setMessages((prev) => [
         ...prev,
-        { id: Date.now() + "a", role: "assistant", text: reply || "I'm having trouble responding. Please contact your care team.", isAgent: true, flagged: false },
+        { id: Date.now() + "a", role: "assistant", text: reply || "I am having trouble responding. Please contact your care team.", isAgent: true, flagged: false },
       ]);
     } catch (err) {
       const errorText = err.message === "rate_limit"
@@ -75,7 +75,7 @@ export default function PatientAsk({ day, data, onFlag, onMedToggle }) {
     setLoading(false);
   }
 
-  const quickActions = ["+ Log medication", "What's my score?", "When can I exercise?", "Am I on track?"];
+  const quickActions = ["+ Log medication", "What is my status?", "When can I exercise?", "Am I on track?"];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", paddingBottom: 80 }}>

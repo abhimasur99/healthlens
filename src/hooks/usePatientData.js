@@ -13,9 +13,13 @@ export default function usePatientData(day) {
     });
   }
 
+  function markMedTaken(key) {
+    setMedState((prev) => ({ ...prev, [key]: true }));
+  }
+
   function addFlag(flag) {
     setFlags((prev) => [...prev.filter((f) => f.id !== flag.id), flag]);
   }
 
-  return { medState, flags, toggleMed, addFlag };
+  return { medState, flags, toggleMed, markMedTaken, addFlag };
 }
